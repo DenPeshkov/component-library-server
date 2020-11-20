@@ -1,0 +1,205 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "game-statistics-controller",
+      "description": "Game Statistics Controller"
+    }
+  ],
+  "paths": {
+    "/api/{id}": {
+      "get": {
+        "tags": [
+          "game-statistics-controller"
+        ],
+        "summary": "getStatistics",
+        "operationId": "getStatisticsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GameStatisticsRes"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "game-statistics-controller"
+        ],
+        "summary": "updateStatistics",
+        "operationId": "updateStatisticsUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "gameStatistics",
+            "description": "gameStatistics",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GameStatisticsReq"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GameStatisticsReq": {
+      "type": "object",
+      "required": [
+        "endGameDateTime",
+        "solvingTime"
+      ],
+      "properties": {
+        "countOfCorrectAnswers": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "countOfTests": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "EASY",
+            "HARD",
+            "MEDIUM"
+          ]
+        },
+        "endGameDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "20-11-2020 21:51:08"
+        },
+        "solvingTime": {
+          "type": "object",
+          "example": "21:51:08"
+        }
+      },
+      "title": "GameStatisticsReq"
+    },
+    "GameStatisticsRes": {
+      "type": "object",
+      "required": [
+        "endGameDateTime",
+        "solvingTime"
+      ],
+      "properties": {
+        "countOfCorrectAnswers": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "countOfTests": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "EASY",
+            "HARD",
+            "MEDIUM"
+          ]
+        },
+        "endGameDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "20-11-2020 21:51:08"
+        },
+        "solvingTime": {
+          "type": "object",
+          "example": "21:51:08"
+        }
+      },
+      "title": "GameStatisticsRes"
+    },
+    "LocalTimeReq": {
+      "type": "object",
+      "properties": {
+        "hour": {
+          "type": "string",
+          "format": "byte"
+        },
+        "minute": {
+          "type": "string",
+          "format": "byte"
+        },
+        "nano": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "second": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "title": "LocalTimeReq"
+    },
+    "LocalTimeRes": {
+      "type": "object",
+      "properties": {
+        "hour": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minute": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nano": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "second": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "LocalTimeRes"
+    }
+  }
+}

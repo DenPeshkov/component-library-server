@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class GameStatisticsController {

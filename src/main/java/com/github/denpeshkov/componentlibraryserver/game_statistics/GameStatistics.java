@@ -1,6 +1,7 @@
 package com.github.denpeshkov.componentlibraryserver.game_statistics;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDateTime;
@@ -64,6 +65,7 @@ public class GameStatistics {
       this.diffId = diffId;
     }
 
+    @JsonValue
     public int getDiffId() {
       return diffId;
     }

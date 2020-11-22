@@ -103,11 +103,11 @@
           "format": "int32"
         },
         "difficulty": {
-          "type": "string",
+          "type": "integer",
           "enum": [
-            "EASY",
-            "HARD",
-            "MEDIUM"
+            0,
+            1,
+            2
           ]
         },
         "endGameDateTime": {
@@ -138,11 +138,12 @@
           "format": "int32"
         },
         "difficulty": {
-          "type": "string",
+          "type": "integer",
+          "format": "int32",
           "enum": [
-            "EASY",
-            "HARD",
-            "MEDIUM"
+            0,
+            1,
+            2
           ]
         },
         "endGameDateTime": {

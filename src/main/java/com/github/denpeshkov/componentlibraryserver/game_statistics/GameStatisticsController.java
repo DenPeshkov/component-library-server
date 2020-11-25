@@ -18,6 +18,6 @@ public class GameStatisticsController {
   @ResponseStatus(HttpStatus.OK)
   GameStatistics getStatistics(@PathVariable String id) {
     return new GameStatistics(
-        GameStatistics.DIFFICULTY.EASY, 1, LocalTime.now(), 4, LocalDateTime.now());
+        GameStatistics.DIFFICULTY.EASY, 1, 135, 4, LocalDateTime.now());
   }
 }

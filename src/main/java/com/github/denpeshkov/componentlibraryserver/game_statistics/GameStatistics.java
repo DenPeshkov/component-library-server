@@ -1,6 +1,5 @@
 package com.github.denpeshkov.componentlibraryserver.game_statistics;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -8,23 +7,40 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class GameStatistics {
+  @ApiModelProperty(
+          value = "Сложность",
+          required = true,
+          example = "0")
   private final DIFFICULTY difficulty;
+
+  @ApiModelProperty(
+          value = "Количество правильных ответов",
+          required = true,
+          example = "3")
   private final int countOfCorrectAnswers;
 
-  @JsonFormat(pattern = "HH:mm:ss")
-  @ApiModelProperty(required = true, example = "21:51:08", dataType = "org.joda.time.LocalTime")
-  private final LocalTime solvingTime;
+  @ApiModelProperty(
+      value = "Среднее время решения здачи в секундах",
+      required = true,
+      example = "100")
+  private final int solvingTime;
 
+  @ApiModelProperty(
+          value = "Количество тестов",
+          required = true,
+          example = "5")
   private final Integer countOfTests;
 
-  @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-  @ApiModelProperty(required = true, example = "20-11-2020 21:51:08")
+  @ApiModelProperty(
+      value = "Время окончания игры",
+      required = true,
+      example = "2020-11-25T19:42:18.298Z")
   private final LocalDateTime endGameDateTime;
 
   public GameStatistics(
       DIFFICULTY difficulty,
       int countOfCorrectAnswers,
-      LocalTime solvingTime,
+      int solvingTime,
       Integer countOfTests,
       LocalDateTime endGameDateTime) {
     this.difficulty = difficulty;
@@ -42,7 +58,7 @@ public class GameStatistics {
     return countOfCorrectAnswers;
   }
 
-  public LocalTime getSolvingTime() {
+  public int getSolvingTime() {
     return solvingTime;
   }
 

@@ -11,7 +11,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   },
-  "host": "localhost:8080",
+  "host": "localhost:9000",
   "basePath": "/",
   "tags": [
     {
@@ -90,34 +90,46 @@
     "GameStatisticsReq": {
       "type": "object",
       "required": [
+        "countOfCorrectAnswers",
+        "countOfTests",
+        "difficulty",
         "endGameDateTime",
         "solvingTime"
       ],
       "properties": {
         "countOfCorrectAnswers": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "example": 3,
+          "description": "Количество правильных ответов"
         },
         "countOfTests": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "example": 5,
+          "description": "Количество тестов"
         },
         "difficulty": {
-          "type": "integer",
+          "type": "string",
+          "example": 0,
+          "description": "Сложность",
           "enum": [
-            0,
-            1,
-            2
+            "0",
+            "1",
+            "2"
           ]
         },
         "endGameDateTime": {
           "type": "string",
           "format": "date-time",
-          "example": "20-11-2020 21:51:08"
+          "example": "2020-11-25T19:42:18.298Z",
+          "description": "Время окончания игры"
         },
         "solvingTime": {
-          "type": "object",
-          "example": "21:51:08"
+          "type": "integer",
+          "format": "int32",
+          "example": 100,
+          "description": "Среднее время решения здачи в секундах"
         }
       },
       "title": "GameStatisticsReq"
@@ -125,82 +137,49 @@
     "GameStatisticsRes": {
       "type": "object",
       "required": [
+        "countOfCorrectAnswers",
+        "countOfTests",
+        "difficulty",
         "endGameDateTime",
         "solvingTime"
       ],
       "properties": {
         "countOfCorrectAnswers": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "example": 3,
+          "description": "Количество правильных ответов"
         },
         "countOfTests": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "example": 5,
+          "description": "Количество тестов"
         },
         "difficulty": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
+          "example": 0,
+          "description": "Сложность",
           "enum": [
-            0,
-            1,
-            2
+            "0",
+            "1",
+            "2"
           ]
         },
         "endGameDateTime": {
           "type": "string",
           "format": "date-time",
-          "example": "20-11-2020 21:51:08"
+          "example": "2020-11-25T19:42:18.298Z",
+          "description": "Время окончания игры"
         },
         "solvingTime": {
-          "type": "object",
-          "example": "21:51:08"
+          "type": "integer",
+          "format": "int32",
+          "example": 100,
+          "description": "Среднее время решения здачи в секундах"
         }
       },
       "title": "GameStatisticsRes"
-    },
-    "LocalTimeReq": {
-      "type": "object",
-      "properties": {
-        "hour": {
-          "type": "string",
-          "format": "byte"
-        },
-        "minute": {
-          "type": "string",
-          "format": "byte"
-        },
-        "nano": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "second": {
-          "type": "string",
-          "format": "byte"
-        }
-      },
-      "title": "LocalTimeReq"
-    },
-    "LocalTimeRes": {
-      "type": "object",
-      "properties": {
-        "hour": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "minute": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "nano": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "second": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "title": "LocalTimeRes"
     }
   }
 }

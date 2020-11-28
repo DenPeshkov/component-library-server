@@ -1,48 +1,68 @@
 package com.github.denpeshkov.componentlibraryserver.game_statistics;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class GameStatistics {
+
+  @Id
   @ApiModelProperty(
-          value = "Сложность",
-          required = true,
-          example = "0")
-  private final DIFFICULTY difficulty;
+      value = "id игры",
+      required = true,
+      example = "0")
+  @JsonIgnore
+  private int id;
 
   @ApiModelProperty(
-          value = "Количество правильных ответов",
-          required = true,
-          example = "3")
-  private final int countOfCorrectAnswers;
+      value = "Сложность",
+      required = true,
+      example = "0")
+  private Difficulty difficulty;
+
+  @ApiModelProperty(
+      value = "Сложность",
+      required = true,
+      example = "0")
+  private int countOfCorrectAnswers;
 
   @ApiModelProperty(
       value = "Среднее время решения здачи в секундах",
       required = true,
       example = "100")
-  private final int solvingTime;
+  private int solvingTime;
 
   @ApiModelProperty(
-          value = "Количество тестов",
-          required = true,
-          example = "5")
-  private final Integer countOfTests;
+      value = "Количество тестов",
+      required = true,
+      example = "5")
+  private Integer countOfTests;
 
   @ApiModelProperty(
       value = "Время окончания игры",
       required = true,
       example = "2020-11-25T19:42:18.298Z")
-  private final LocalDateTime endGameDateTime;
+  private LocalDateTime endGameDateTime;
+
+  public GameStatistics() {
+  }
+
+  public GameStatistics(int id, GameStatistics gameStatistics) {
+    difficulty = gameStatistics.getDifficulty();
+    countOfCorrectAnswers = gameStatistics.getCountOfCorrectAnswers();
+    solvingTime = gameStatistics.getSolvingTime();
+    countOfTests = gameStatistics.getCountOfTests();
+    endGameDateTime = gameStatistics.getEndGameDateTime();
+  }
 
   public GameStatistics(
-      DIFFICULTY difficulty,
-      int countOfCorrectAnswers,
-      int solvingTime,
-      Integer countOfTests,
-      LocalDateTime endGameDateTime) {
+      int id, Difficulty difficulty, int countOfCorrectAnswers, int solvingTime,
+      Integer countOfTests, LocalDateTime endGameDateTime) {
+    this.id = id;
     this.difficulty = difficulty;
     this.countOfCorrectAnswers = countOfCorrectAnswers;
     this.solvingTime = solvingTime;
@@ -50,40 +70,52 @@ public class GameStatistics {
     this.endGameDateTime = endGameDateTime;
   }
 
-  public DIFFICULTY getDifficulty() {
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public Difficulty getDifficulty() {
     return difficulty;
+  }
+
+  public void setDifficulty(
+      Difficulty difficulty) {
+    this.difficulty = difficulty;
   }
 
   public int getCountOfCorrectAnswers() {
     return countOfCorrectAnswers;
   }
 
+  public void setCountOfCorrectAnswers(int countOfCorrectAnswers) {
+    this.countOfCorrectAnswers = countOfCorrectAnswers;
+  }
+
   public int getSolvingTime() {
     return solvingTime;
+  }
+
+  public void setSolvingTime(int solvingTime) {
+    this.solvingTime = solvingTime;
   }
 
   public Integer getCountOfTests() {
     return countOfTests;
   }
 
+  public void setCountOfTests(Integer countOfTests) {
+    this.countOfTests = countOfTests;
+  }
+
   public LocalDateTime getEndGameDateTime() {
     return endGameDateTime;
   }
 
-  public enum DIFFICULTY {
-    EASY(0),
-    MEDIUM(1),
-    HARD(2);
-
-    private final int diffId;
-
-    DIFFICULTY(int diffId) {
-      this.diffId = diffId;
-    }
-
-    @JsonValue
-    public int getDiffId() {
-      return diffId;
-    }
+  public void setEndGameDateTime(LocalDateTime endGameDateTime) {
+    this.endGameDateTime = endGameDateTime;
   }
 }

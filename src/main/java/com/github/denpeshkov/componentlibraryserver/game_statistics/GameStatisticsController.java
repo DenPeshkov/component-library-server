@@ -1,11 +1,13 @@
 package com.github.denpeshkov.componentlibraryserver.game_statistics;
 
+import com.github.denpeshkov.componentlibraryserver.game_statistics.exceptions.NoStatisticsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import org.springframework.web.server.ResponseStatusException;
 
 @CrossOrigin
 @RestController
@@ -34,6 +36,10 @@ public class GameStatisticsController {
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
   public GameStatistics getStatistics(@PathVariable int id) {
-    return gameStatisticsService.getGameStatistics(id);
+    try {
+      return gameStatisticsService.getGameStatistics(id);
+    } catch (NoStatisticsException e) {
+      throw new ResponseStatusException(HttpStatus.OK, e.getLocalizedMessage(), e);
+    }
   }
 }

@@ -18,7 +18,7 @@ public class GameStatisticsService {
     this.gameStatisticsRepository = gameStatisticsRepository;
   }
 
-  public GameStatistics getGameStatistics(int id) {
+  public GameStatistics getGameStatistics(int id) throws NoStatisticsException {
     Optional<GameStatistics> gameStatisticsOptional = gameStatisticsRepository.findById(id);
 
     if (gameStatisticsOptional.isEmpty()) {

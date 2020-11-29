@@ -1,6 +1,6 @@
 package com.github.denpeshkov.componentlibraryserver.game_statistics.exceptions;
 
-public class NoStatisticsException extends RuntimeException {
+public class NoStatisticsException extends Exception {
 
   public NoStatisticsException() {
     super("Statistics not found!");

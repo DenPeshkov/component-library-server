@@ -1,33 +1,24 @@
 package com.github.denpeshkov.componentlibraryserver.game_statistics;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class GameStatistics {
 
   @Id
-  @ApiModelProperty(
-      value = "id игры",
-      required = true,
-      example = "0")
+  @ApiModelProperty(value = "id игры", required = true, example = "0")
   @JsonIgnore
   private int id;
 
-  @ApiModelProperty(
-      value = "Сложность",
-      required = true,
-      example = "0")
+  @ApiModelProperty(value = "Сложность", required = true, example = "0")
   private Difficulty difficulty;
 
-  @ApiModelProperty(
-      value = "Сложность",
-      required = true,
-      example = "0")
+  @ApiModelProperty(value = "Сложность", required = true, example = "0")
   private int countOfCorrectAnswers;
 
   @ApiModelProperty(
@@ -36,10 +27,7 @@ public class GameStatistics {
       example = "100")
   private int solvingTime;
 
-  @ApiModelProperty(
-      value = "Количество тестов",
-      required = true,
-      example = "5")
+  @ApiModelProperty(value = "Количество тестов", required = true, example = "5")
   private Integer countOfTests;
 
   @ApiModelProperty(
@@ -48,8 +36,7 @@ public class GameStatistics {
       example = "2020-11-25T19:42:18.298Z")
   private LocalDateTime endGameDateTime;
 
-  public GameStatistics() {
-  }
+  public GameStatistics() {}
 
   public GameStatistics(int id, GameStatistics gameStatistics) {
     difficulty = gameStatistics.getDifficulty();
@@ -60,8 +47,12 @@ public class GameStatistics {
   }
 
   public GameStatistics(
-      int id, Difficulty difficulty, int countOfCorrectAnswers, int solvingTime,
-      Integer countOfTests, LocalDateTime endGameDateTime) {
+      int id,
+      Difficulty difficulty,
+      int countOfCorrectAnswers,
+      int solvingTime,
+      Integer countOfTests,
+      LocalDateTime endGameDateTime) {
     this.id = id;
     this.difficulty = difficulty;
     this.countOfCorrectAnswers = countOfCorrectAnswers;
@@ -82,8 +73,7 @@ public class GameStatistics {
     return difficulty;
   }
 
-  public void setDifficulty(
-      Difficulty difficulty) {
+  public void setDifficulty(Difficulty difficulty) {
     this.difficulty = difficulty;
   }
 

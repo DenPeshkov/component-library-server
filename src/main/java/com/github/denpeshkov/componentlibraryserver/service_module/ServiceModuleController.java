@@ -1,22 +1,21 @@
 package com.github.denpeshkov.componentlibraryserver.service_module;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/apps")
 public class ServiceModuleController {
-    final ServiceModuleService serviceModuleService;
+  final ServiceModuleService serviceModuleService;
 
-    public ServiceModuleController(ServiceModuleService serviceModuleService) {
-        this.serviceModuleService = serviceModuleService;
-    }
+  public ServiceModuleController(ServiceModuleService serviceModuleService) {
+    this.serviceModuleService = serviceModuleService;
+  }
 
-    @PostMapping
-    public void postStatistics(@RequestBody Statistics statistics) {
-        serviceModuleService.saveServiceModuleStatistics(statistics);
+  @PostMapping
+  public void postStatistics(@RequestBody Statistics[] statistics) {
+    for (Statistics statistic : statistics) {
+      serviceModuleService.saveServiceModuleStatistics(statistic);
     }
+  }
 }

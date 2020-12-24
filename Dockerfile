@@ -1,4 +1,8 @@
 FROM openjdk:11.0.9.1
 ARG JAR_FILE=target/*.jar
+EXPOSE 8080
+ENV DB_URL="URL"
+ENV DB_USERNAME="USERNAME"
+ENV DB_PASSWORD="PASSWORD"
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]

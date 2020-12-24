@@ -2,12 +2,10 @@ package com.github.denpeshkov.componentlibraryserver.service_module;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Statistics_6")
 public class Statistics {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

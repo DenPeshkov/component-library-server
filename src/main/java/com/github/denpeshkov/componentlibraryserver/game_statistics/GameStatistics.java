@@ -5,9 +5,11 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "GameStatistics_6")
 public class GameStatistics {
 
   @Id

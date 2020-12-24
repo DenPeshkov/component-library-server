@@ -39,6 +39,7 @@ public class GameStatistics {
   public GameStatistics() {}
 
   public GameStatistics(int id, GameStatistics gameStatistics) {
+    this.id=id;
     difficulty = gameStatistics.getDifficulty();
     countOfCorrectAnswers = gameStatistics.getCountOfCorrectAnswers();
     solvingTime = gameStatistics.getSolvingTime();

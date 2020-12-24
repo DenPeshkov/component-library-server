@@ -32,25 +32,4 @@ public class GameStatisticsService {
   public void saveGameStatistics(GameStatistics gameStatistics) {
     gameStatisticsRepository.save(gameStatistics);
   }
-
-  /**
-   * @param gameStatistics game's statistics
-   * @return {@code true} if created, {@code false} if updated
-   */
-  public boolean updateGameStatistics(GameStatistics gameStatistics) {
-    if (!gameStatisticsRepository.existsById(gameStatistics.getId())) {
-      saveGameStatistics(gameStatistics);
-      return true;
-    }
-
-    GameStatistics gameStatisticsOld = gameStatisticsRepository.findById(gameStatistics.getId())
-        .get();
-    GameStatistics gameStatisticsNew = new GameStatistics(gameStatisticsOld.getId(),
-        gameStatistics);
-
-    gameStatisticsRepository.save(gameStatisticsNew);
-
-    return false;
-  }
-
 }

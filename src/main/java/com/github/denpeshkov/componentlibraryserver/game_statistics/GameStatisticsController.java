@@ -19,15 +19,13 @@ public class GameStatisticsController {
     this.gameStatisticsService = gameStatisticsService;
   }
 
-  @PutMapping("/{id}")
+  @PostMapping("/{id}")
   public ResponseEntity<GameStatistics> updateStatistics(
       @PathVariable int id, @RequestBody GameStatistics gameStatistics) {
     gameStatistics.setId(id);
-    boolean created = gameStatisticsService.updateGameStatistics(gameStatistics);
+    gameStatisticsService.saveGameStatistics(gameStatistics);
 
-    HttpStatus status = created ? HttpStatus.CREATED : HttpStatus.NO_CONTENT;
-
-    return new ResponseEntity<>(status);
+    return new ResponseEntity<>(HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")

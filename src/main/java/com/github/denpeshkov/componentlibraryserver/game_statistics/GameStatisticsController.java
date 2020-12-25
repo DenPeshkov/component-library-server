@@ -22,7 +22,7 @@ public class GameStatisticsController {
   @PostMapping("/{id}")
   public ResponseEntity<GameStatistics> updateStatistics(
       @PathVariable int id, @RequestBody GameStatistics gameStatistics) {
-    gameStatistics.setId(id);
+    gameStatistics.setGameId(id);
     gameStatisticsService.saveGameStatistics(gameStatistics);
 
     return new ResponseEntity<>(HttpStatus.CREATED);
